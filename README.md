@@ -10,8 +10,11 @@ Install docker desktop here - https://docs.docker.com/docker-for-windows/install
 Install VcXsrv here - https://sourceforge.net/projects/vcxsrv/
 
 # Running a workstation
-Change directories into the root folder for the workstation you would like to run, run build.ps1 to build and run.ps1 to execute
+Clone this repo and change folders into it then change directories into the root folder for the workstation you would like to run, run build.ps1 to build and run.ps1 to execute
+
 ```
+git clone https://github.com/22ndtech/ndtech-workstations.git
+cd ndtech-workstations
 cd ./ndtech-k8s-pipeline-workstation
 ./build.ps1
 ./run.ps1

@@ -4,7 +4,7 @@ LABEL maintainer="admin@22ndtech.com"
 ENV GITHUB_USER="$GITHUB_USER"
 ENV GITHUB_TOKEN="$GITHUB_TOKEN"
 
-ENV REPOSITORY_NAME="ndtech-k8s-flux"
+ENV REPOSITORY_NAME="ndtech-workstations"
 ENV REPOSITORY_URL="https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/22ndtech/${REPOSITORY_NAME}.git"
 
 COPY ./scripts /scripts/

@@ -1,0 +1,16 @@
+FROM 22ndtech/vscode
+LABEL maintainer="admin@22ndtech.com"
+
+RUN curl -L https://golang.org/dl/go1.15.5.linux-amd64.tar.gz -o go.tar.gz
+RUN tar -xzf go.tar.gz
+RUN cp -r go /usr/local
+RUN rm -rf go
+RUN rm  go.tar.gz
+ENV PATH="$PATH:/usr/local/go/bin"
+RUN go version
+
+RUN /usr/bin/code --user-data-dir /vscode-user-data --install-extension golang.go
+RUN go get -v golang.org/x/tools/gopls
+RUN go get -v github.com/go-delve/delve/cmd/dlv
+
+ENTRYPOINT [ "/bin/bash", "/usr/bin/entrypoint.bash" ]

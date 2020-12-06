@@ -1,4 +1,4 @@
-FROM 22ndtech/ndtech-go-development-workstation 
+FROM 22ndtech/ndtech-k8s-development-workstation 
 LABEL maintainer="admin@22ndtech.com"
 
 ENV GITHUB_USER="$GITHUB_USER"

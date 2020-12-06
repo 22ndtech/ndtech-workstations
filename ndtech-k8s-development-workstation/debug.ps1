@@ -1,4 +1,4 @@
-docker run `
+docker run -it `
 -e DISPLAY=${Env:ipv4}:0 `
 -e GITHUB_USER=$ENV:GITHUB_USER `
 -e GITHUB_TOKEN=$ENV:GITHUB_TOKEN `
@@ -9,4 +9,4 @@ docker run `
 -v c:\data\cached-src:/work `
 -v ${PWD}/scripts:/work/scripts `
 -v ${Env:CERTS_PATH}:/openssl-certs:ro `
---rm 22ndtech/22ndtech-k8s-admin-workstation
+--rm --entrypoint /bin/bash 22ndtech/ndtech-k8s-development-workstation

@@ -1,0 +1,70 @@
+FROM 22ndtech/ndtech-go-development-workstation 
+LABEL maintainer="admin@22ndtech.com"
+
+ENV DO_EXTERNAL_DNS_TOKEN=${DO_EXTERNAL_DNS_TOKEN}
+
+ENV GIT_USER_NAME="$GIT_USER_NAME"
+ENV GIT_USER_EMAIL="$GIT_USER_EMAIL"
+ENV GITHUB_USER="$GITHUB_USER"
+ENV GITHUB_TOKEN="$GITHUB_TOKEN"
+# GITHUB_ORGANIZATION will be the GITHUB_USER for a personal repo
+ENV GITHUB_ORGANIZATION="$GITHUB_ORGANIZATION"
+
+RUN \
+  # install kubectl
+  echo "installing kubectl" \
+  && cd "${CONTEXT_PATH}" \
+  && curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" \
+  && mv kubectl /usr/local/bin \
+  && chmod +x /usr/local/bin/kubectl
+
+RUN \
+  # install git, python and pip
+  apt-get update \
+  && apt-get install -y git \ 
+  && apt-get install -y python3 \
+  && apt-get install -y python3-pip
+
+RUN \
+  # install yp
+  pip3 install --upgrade pip \
+  && pip3 install yq
+
+RUN \
+  # install krew
+  echo "installing krew" \
+  && ( \
+    set -x; cd "$(mktemp -d)" \
+    && curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.tar.gz" \
+    && tar zxvf krew.tar.gz \
+    && KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_$(uname -m | sed -e 's/x86_64/amd64/' -e 's/arm.*$/arm/')" \
+    && "$KREW" install krew \
+  ) \
+  && apt update \
+  && PATH="${KREW_ROOT:-/root/.krew}/bin:$PATH" \
+  # install ctx
+  && echo "installing the ctx plugin for kubectl" \
+  && kubectl krew install ctx \
+  # install ns
+  && echo "installing the ns plugin for kubectl" \
+  && kubectl krew install ns
+
+ENV PATH="${KREW_ROOT:-/root/.krew}/bin:$PATH"
+
+RUN \
+  echo "set up alias for kubectl" \
+  # set up an alias for kubectl
+  && echo "alias k='kubectl'" > ./.bashrc
+  
+
+# Install the github cli
+RUN curl -LO https://github.com/cli/cli/releases/download/v1.3.0/gh_1.3.0_linux_amd64.tar.gz -o gh.tar.gz
+RUN tar -xvf ./gh_1.3.0_linux_amd64.tar.gz -C /usr/bin
+ENV PATH=${PATH}:/usr/bin/gh_1.3.0_linux_amd64/bin
+
+# Install flux2
+RUN curl -s https://toolkit.fluxcd.io/install.sh | bash
+
+COPY ./scripts /scripts/
+
+ENTRYPOINT [ "/bin/bash", "/scripts/pre-entry.sh" ]

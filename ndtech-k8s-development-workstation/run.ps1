@@ -9,4 +9,4 @@ docker run `
 -v c:\data\cached-src:/work `
 -v ${PWD}/scripts:/work/scripts `
 -v ${Env:CERTS_PATH}:/openssl-certs:ro `
---rm 22ndtech/22ndtech-k8s-admin-workstation
+--rm 22ndtech/ndtech-k8s-development-workstation

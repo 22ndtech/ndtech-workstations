@@ -5,7 +5,8 @@ docker run `
 -e GITHUB_ORGANIZATION="22ndtech" `
 -e GIT_USER_NAME="$ENV:GIT_USER_NAME" `
 -e GIT_USER_EMAIL="$ENV:GIT_USER_EMAIL" `
--v c:\data\cached-src:/work `
--v ${PWD}/scripts:/work/scripts `
+-e GIT_REPOSITORY_NAME="ndtech-node" `
 -v ${Env:CERTS_PATH}:/openssl-certs:ro `
+-v ${ENV:GITHUB_PROJECTS}:/work `
+-v ${PWD}/scripts:/work/scripts `
 --rm 22ndtech/ndtech-node-workstation

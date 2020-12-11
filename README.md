@@ -15,7 +15,7 @@ Clone this repo and change folders into it then change directories into the root
 ```
 git clone https://github.com/22ndtech/ndtech-workstations.git
 cd ndtech-workstations
-cd ./ndtech-k8s-pipeline-workstation
+cd ./ndtech-go-development-workstation
 ./build.ps1
 ./run.ps1
 ```

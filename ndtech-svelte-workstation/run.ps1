@@ -5,8 +5,8 @@ docker run `
 -e GITHUB_ORGANIZATION="22ndtech" `
 -e GIT_USER_NAME="$ENV:GIT_USER_NAME" `
 -e GIT_USER_EMAIL="$ENV:GIT_USER_EMAIL" `
--e DIGITAL_OCEAN_INITIAL_TOKEN="$Env:DIGITAL_OCEAN_INITIAL_TOKEN" `
--v c:\data\cached-src:/work `
--v ${PWD}/scripts:/work/scripts `
+-e GIT_REPOSITORY_NAME="ndtech-svelte" `
 -v ${Env:CERTS_PATH}:/openssl-certs:ro `
---rm 22ndtech/ndtech-k8s-development-workstation
+-v ${ENV:GITHUB_PROJECTS}:/work `
+-v ${PWD}/scripts:/work/scripts `
+--rm 22ndtech/ndtech-svelte-workstation

@@ -1,12 +1,9 @@
-FROM 22ndtech/ndtech-k8s-development-workstation 
+FROM 22ndtech/ndtech-go-development-workstation 
 LABEL maintainer="admin@22ndtech.com"
 
-ENV GITHUB_USER="$GITHUB_USER"
-ENV GITHUB_TOKEN="$GITHUB_TOKEN"
+ENV DO_EXTERNAL_DNS_TOKEN=${DO_EXTERNAL_DNS_TOKEN}
 
-ENV REPOSITORY_NAME="ndtech-workstations"
-ENV REPOSITORY_URL="https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/22ndtech/${REPOSITORY_NAME}.git"
+# Install flux2
+RUN curl -s https://toolkit.fluxcd.io/install.sh | bash
 
-COPY ./scripts /scripts/
-
-ENTRYPOINT [ "/bin/bash", "/scripts/pre-entry.sh" ]
+ENTRYPOINT [ "/bin/bash", "/usr/bin/entrypoint.bash" ]

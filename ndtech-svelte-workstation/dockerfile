@@ -1,5 +1,7 @@
-FROM 22ndtech/vscode 
+FROM 22ndtech/ndtech-node-workstation
 LABEL maintainer="admin@22ndtech.com"
+
+
 
 WORKDIR /work
 

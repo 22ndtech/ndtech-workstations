@@ -8,5 +8,5 @@ docker run `
 -e GIT_REPOSITORY_NAME="ndtech-node" `
 -v ${Env:CERTS_PATH}:/openssl-certs:ro `
 -v ${ENV:GITHUB_PROJECTS}:/work `
--v ${PWD}/scripts:/work/scripts `
+-v c:\data\vscode-user-data:/vscode-user-data `
 --rm 22ndtech/ndtech-node-workstation

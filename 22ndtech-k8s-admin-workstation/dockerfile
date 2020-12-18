@@ -6,4 +6,42 @@ ENV DO_EXTERNAL_DNS_TOKEN=${DO_EXTERNAL_DNS_TOKEN}
 # Install flux2
 RUN curl -s https://toolkit.fluxcd.io/install.sh | bash
 
+# Install helm3
+RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+RUN chmod 700 get_helm.sh
+RUN ./get_helm.sh
+RUN rm ./get_helm.sh
+
+# Install tekton
+RUN curl -LO https://github.com/tektoncd/cli/releases/download/v0.14.0/tkn_0.14.0_Linux_x86_64.tar.gz
+RUN tar xvzf tkn_0.14.0_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn
+RUN ln -s /usr/local/bin/tkn /usr/local/bin/kubectl-tkn
+
+# Install doctl
+RUN curl -L https://github.com/digitalocean/doctl/releases/download/v1.54.0/doctl-1.54.0-linux-amd64.tar.gz -o doctl.tar.gz
+RUN tar -xvf ./doctl.tar.gz
+RUN mv ./doctl /usr/local/bin
+
+# # Install docker
+# RUN apt-get update \
+# # Update the apt package index and install packages to allow apt to use a repository over HTTPS:
+#  && apt-get install -y \
+#     apt-transport-https \
+#     ca-certificates \
+#     curl \
+#     gnupg-agent \
+#     software-properties-common
+# # Add Docker’s official GPG key:
+# RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+# # Verify that you now have the key with the fingerprint 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88, 
+# # by searching for the last 8 characters of the fingerprint
+# RUN apt-key fingerprint 0EBFCD88 
+# # Use the following command to set up the stable repository
+# RUN add-apt-repository \
+#    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+#    $(lsb_release -cs) \
+#    stable"
+# RUN apt-get update \
+#   && apt-get install -y docker-ce-cli
+
 ENTRYPOINT [ "/bin/bash", "/usr/bin/entrypoint.bash" ]

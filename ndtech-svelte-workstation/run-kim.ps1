@@ -1,0 +1,12 @@
+docker run `
+-e DISPLAY=${Env:ipv4}:0 `
+-e GITHUB_USER=$ENV:GITHUB_USER `
+-e GITHUB_TOKEN=$ENV:GITHUB_TOKEN `
+-e GITHUB_ORGANIZATION="kimhegedus" `
+-e GIT_USER_NAME="$ENV:GIT_USER_NAME" `
+-e GIT_USER_EMAIL="$ENV:GIT_USER_EMAIL" `
+-e GIT_REPOSITORY_NAME="ndtech-sapper-client" `
+-v ${Env:CERTS_PATH}:/openssl-certs:ro `
+-v ${ENV:GITHUB_PROJECTS}:/work `
+-v ${PWD}/scripts:/work/scripts `
+--rm 22ndtech/ndtech-svelte-workstation

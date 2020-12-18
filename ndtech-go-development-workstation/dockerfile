@@ -1,4 +1,4 @@
-FROM 22ndtech/vscode
+FROM 22ndtech/ndtech-workstation
 LABEL maintainer="admin@22ndtech.com"
 
 RUN curl -L https://golang.org/dl/go1.15.5.linux-amd64.tar.gz -o go.tar.gz

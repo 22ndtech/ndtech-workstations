@@ -1,0 +1,38 @@
+{
+  "editor.wordWrap": "on",
+  "go.formatTool": "goimports",
+  "editor.tabSize": 2,
+  "terminal.integrated.shell.linux": "/bin/bash",
+  // ---------------------------------------------------
+  // Go Settings : Begin
+  // ---------------------------------------------------
+  "go.useLanguageServer": true,
+  "[go]": {
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+          "source.organizeImports": true,
+      },
+      // Optional: Disable snippets, as they conflict with completion ranking.
+      "editor.snippetSuggestions": "none",
+  },
+  "[go.mod]": {
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+          "source.organizeImports": true,
+      },
+  },
+  "gopls": {
+      // Add parameter placeholders when completing a function.
+      "usePlaceholders": true,
+      // If true, enable additional analyses with staticcheck.
+      // Warning: This will significantly increase memory usage.
+      "staticcheck": false,
+  },
+  "explorer.confirmDragAndDrop": false,
+  "[dockerfile]": {
+      "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  }
+  // ---------------------------------------------------
+  // Go Settings : End
+  // ---------------------------------------------------
+}

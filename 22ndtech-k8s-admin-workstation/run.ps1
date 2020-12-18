@@ -6,8 +6,9 @@ docker run `
 -e GIT_USER_NAME="$ENV:GIT_USER_NAME" `
 -e GIT_USER_EMAIL="$ENV:GIT_USER_EMAIL" `
 -e DIGITAL_OCEAN_INITIAL_TOKEN="$Env:DIGITAL_OCEAN_INITIAL_TOKEN" `
--e GIT_REPOSITORY_NAME="ndtech-workstations" `
+-e DO_EXTERNAL_DNS_TOKEN="$Env:DO_EXTERNAL_DNS_TOKEN" `
+-e GIT_REPOSITORY_NAME="${args}" `
 -v ${Env:CERTS_PATH}:/openssl-certs:ro `
 -v ${ENV:GITHUB_PROJECTS}:/work `
--v ${PWD}/scripts:/work/scripts `
+-v c:\data\vscode-user-data:/vscode-user-data `
 --rm 22ndtech/22ndtech-k8s-admin-workstation

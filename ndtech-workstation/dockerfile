@@ -7,12 +7,6 @@ WORKDIR /work
 RUN apt-get update \
   && apt-get install -y curl
 
-# # install vs code from a debian package in the repo
-# # TODO: Update this 
-# COPY vscode.deb ./
-# RUN apt install -y ./vscode.deb
-# RUN rm vscode.deb
-
 # get the latest debian package of vscode
 RUN apt-get install -y wget gpg
 RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg \

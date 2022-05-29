@@ -1,0 +1,1 @@
+docker tag 22ndtech/ndtech-mongo-tools:latest 22ndtech/ndtech-mongo-tools:0.0.1

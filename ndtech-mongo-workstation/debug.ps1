@@ -9,4 +9,5 @@ docker run -it `
 -v ${Env:CERTS_PATH}:/openssl-certs:ro `
 -v ${ENV:GITHUB_PROJECTS}:/work `
 -v ${PWD}/scripts:/work/scripts `
---rm --entrypoint /bin/bash 22ndtech/ndtech-mongo-workstation
+-p 27017:27017 `
+--rm --entrypoint /bin/bash 22ndtech/ndtech-mongo-workstation:latest

@@ -1,0 +1,1 @@
+docker push 22ndtech/22ndtech-k8s-admin-workstation:0.0.1

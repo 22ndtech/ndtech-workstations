@@ -1,1 +1,1 @@
-docker build -f .\dockerfile -t 22ndtech/ndtech-go-development-workstation .
+docker build -f .\dockerfile -t 22ndtech/ndtech-go-development-workstation:latest .

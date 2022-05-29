@@ -11,4 +11,4 @@ docker run `
 -v ${Env:CERTS_PATH}:/openssl-certs:ro `
 -v ${ENV:GITHUB_PROJECTS}:/work `
 -v c:\data\vscode-user-data:/vscode-user-data `
---rm 22ndtech/22ndtech-k8s-admin-workstation
+--rm --network host 22ndtech/22ndtech-k8s-admin-workstation:0.0.1

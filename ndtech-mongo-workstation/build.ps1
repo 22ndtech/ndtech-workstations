@@ -1,1 +1,1 @@
-docker build -f .\dockerfile -t 22ndtech/ndtech-mongo-workstation .
+docker build -f .\dockerfile -t 22ndtech/ndtech-mongo-workstation:latest .

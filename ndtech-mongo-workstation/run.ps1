@@ -10,4 +10,5 @@ docker run `
 -v ${ENV:GITHUB_PROJECTS}:/work `
 -v ${PWD}/scripts:/work/scripts `
 -v c:\data\vscode-user-data:/vscode-user-data `
---rm 22ndtech/ndtech-mongo-workstation
+-p 27017:27017 `
+--rm 22ndtech/ndtech-mongo-workstation:latest

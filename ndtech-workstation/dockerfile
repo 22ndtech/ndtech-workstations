@@ -90,7 +90,6 @@ RUN /usr/bin/code --user-data-dir /vscode-user-data --install-extension redhat.v
 RUN /usr/bin/code --user-data-dir /vscode-user-data --list-extensions
 
 COPY entrypoint.bash /usr/bin/entrypoint.bash
-COPY ./settings.json /vscode-user-data/User/
 
 ENV GIT_USER_NAME="$GIT_USER_NAME"
 ENV GIT_USER_EMAIL="$GIT_USER_EMAIL"

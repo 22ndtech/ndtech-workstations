@@ -1,0 +1,6 @@
+FROM 22ndtech/ndtech-mongo-workstation:latest
+LABEL maintainer="admin@22ndtech.com"
+
+WORKDIR /work
+
+ENTRYPOINT [ "/bin/bash" ]

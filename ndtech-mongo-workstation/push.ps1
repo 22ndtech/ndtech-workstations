@@ -1,0 +1,1 @@
+docker push 22ndtech/ndtech-mongo-workstation:0.0.1
